@@ -1,0 +1,20 @@
+{
+  "name": "webui-template",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "cliName": "yourcli",
+  "scripts": {
+    "dev": "APP_NAME=yourcli APP_DATA_DIR=$(pwd)/.yourcli concurrently -k \"pnpm --dir apps/server dev\" \"pnpm --dir apps/web dev --host 0.0.0.0 --port 8871\"",
+    "build": "pnpm --dir apps/web build && pnpm --dir apps/server build && node scripts/build-cli.mjs",
+    "rename": "node scripts/rename.mjs",
+    "global": "pnpm install -g ./dist",
+    "unglobal": "pnpm uninstall -g $(node -p \"require('./package.json').cliName\")"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
