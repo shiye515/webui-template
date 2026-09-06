@@ -60,6 +60,7 @@ function updateDistPackage(targetName) {
   if (fs.existsSync(distPackagePath)) {
     try {
       const pkg = JSON.parse(fs.readFileSync(distPackagePath, 'utf8'));
+      pkg.name = targetName;
       pkg.cliName = targetName;
       pkg.bin = { [targetName]: './cli.js' };
       fs.writeFileSync(distPackagePath, `${JSON.stringify(pkg, null, 2)}\n`, 'utf8');

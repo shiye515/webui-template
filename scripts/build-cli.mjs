@@ -202,7 +202,7 @@ fs.writeFileSync(path.join(distRoot, 'cli.js'), cliSource, 'utf8');
 fs.chmodSync(path.join(distRoot, 'cli.js'), 0o755);
 
 const packageJsonContent = {
-  name: 'webui-cli-template',
+  name: cliName,
   version: '1.0.0',
   private: false,
   type: 'module',
